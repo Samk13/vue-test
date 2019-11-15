@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>vue test</title>
+  </head>
+  <body style="background-color: rgb(39, 47, 42); color: rgb(190, 221, 159);">
+    <div id="root">
+
+      <input type="text" id="input" v-model="message" />
+      <h3> The value of the input is {{ message }}</h3>
+      <h4>{{ foo }}</h4>
+      <div v-for="name in names" v-text="name">
+          <ul>
+              <li>{{ name }}</li>
+          </ul>
+        
+      </div>
+      <br>
+      <br>
+
+    <input type="text"  v-model="newName" v-on:keyUp="onClickHandler">
+    <button @click="onClickHandler">add Name</button>
+      
+
+    </div>
+
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+
+    <script>
+
+      let app = new Vue({
+
+          el: '#root',
+         
+          data : {
+          message : 'hello world!',
+          foo: 'bar',
+          names : ['Sam', 'Maty', 'Jane','Jack'],
+          newName:''
+        },
+
+
+        methods: {
+            onClickHandler(){
+                this.names.push(this.newName)
+                this.newName = ''
+            }
+    
+        } 
+
+      })
+
+    </script>
+  </body>
+</html>
