@@ -21,8 +21,10 @@
       <br>
       <br>
 
-    <input type="text"  v-model="newName" v-on:keyUp="onClickHandler">
-    <button @click="onClickHandler">add Name</button>
+
+    <input type="text"  v-model="newName">
+
+    <button @click="addName">add Name</button>
       
 
     </div>
@@ -44,9 +46,9 @@
 
 
         methods: {
-            onClickHandler(){
+            addName(){
                 this.names.push(this.newName)
-                this.newName = ''
+                this.newName = '';
             }
     
         } 
