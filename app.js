@@ -13,6 +13,10 @@ new Vue({
         
         this.X = e.offsetX* 1000;
         this.Y = e.offsetY *1000;
+    },
+    click: function (){
+        console.log("🤗☺😘");
+        
     }
   }
 });

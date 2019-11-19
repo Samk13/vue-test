@@ -12,11 +12,13 @@
   <body>
     <div id="App">
       <h1>Events</h1>
-      <button @click="add(1)" @dblclick="add(10-2)">add year</button>
+      <button @click.once="add(1)" @dblclick="add(10-2)">add year</button>
       <button @click="subtract(1)" @dblclick="subtract(10-2)">subtract year</button>
       <h1>the age is {{ age }}</h1>
 
       <div id="canvas" @mousemove="updateXY">{{X}}, {{Y}}</div>
+    <a @click.prevent="click"href="https://unpkg.com/vue@2.6.10/dist/vue.js">the websit </a>
+    
     </div>
 
     <script src="app.js"></script>
