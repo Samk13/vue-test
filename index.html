@@ -12,7 +12,15 @@
 </head>
 <body>
 
-  <div id="App"></div>
+  <div id="App">
+    <h1>{{greet('the name')}}</h1>
+    <p>{{name}}</p>
+    <p>{{job}}</p>
+    <a :href='website'>Github</a>
+    <p v-html="websiteTage"></p>
+
+
+  </div>
 
   <script src="app.js"></script>
 </body>
