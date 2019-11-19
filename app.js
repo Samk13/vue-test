@@ -1,15 +1,18 @@
 new Vue({
   el: "#App",
   data: {
-    name: "Sam",
-    job: "software engineer",
-    website: "https://github.com/Samk13",
-    websiteTage: `<a href="https://github.com/Samk13">The website</a>`
+    age: 25,
+    X: 0,
+    Y: 0
   },
 
   methods: {
-    greet: function(time) {
-      return `What's up! ${time} ${this.name}`;
+    add: function(inc){ this.age += inc},
+    subtract: function(dec){this.age -= dec},
+    updateXY: function(e){
+        
+        this.X = e.offsetX* 1000;
+        this.Y = e.offsetY *1000;
     }
   }
 });
