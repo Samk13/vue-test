@@ -11,30 +11,20 @@
   </head>
   <body>
     <div id="App">
-       <h1>looping through lists</h1>
-       <ul>
-         <li v-for="(char, index) in charachters"> {{ index}}--{{ char }}</li>
-         <li v-for="(nin, index) in ninjas">{{index}}--{{nin.reviewer}}- {{ nin.rating}}</li>
-       </ul>
-       <div class="span">
-       <template v-for= "(nin, index) in ninjas">
-        <h1>{{index}}- {{nin.reviewer}}</h1>
-        <h2>{{nin.rating}}</h2>
-        <p>{{nin.reviewer_id}}</p>
-        <h2>{{nin.text}}</h2>
-       </template>
-       <h1>OR !! </h1>
-       <template v-for ="nin in ninjas">
-        <div v-for="(k,v) in nin">
-          <h3>{{ v }} ==> {{ k }}</h3>
-        
-        </div>
-        <br>
-        <br>
-        <br>
+       <!-- bag image -->
+            <div id="bag" v-bind:class="{ burst: ended }"></div>
 
-       </template>
-        </div>
+            <!-- bag health bar -->
+            <div id="bag-health">
+                <div v-bind:style="{ width: health + '%' }"></div>
+            </div>
+
+            <!-- game control buttons -->
+            <div id="controls">
+                <button v-on:click="punch" v-show="!ended">Punch</button>
+                <button v-on:click="restart">Restart</button>
+            </div>
+
     </div>
 
     <script src="app.js"></script>
