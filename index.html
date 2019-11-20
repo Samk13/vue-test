@@ -23,6 +23,17 @@
         <p>{{nin.reviewer_id}}</p>
         <h2>{{nin.text}}</h2>
        </template>
+       <h1>OR !! </h1>
+       <template v-for ="nin in ninjas">
+        <div v-for="(k,v) in nin">
+          <h3>{{ v }} ==> {{ k }}</h3>
+        
+        </div>
+        <br>
+        <br>
+        <br>
+
+       </template>
         </div>
     </div>
 
