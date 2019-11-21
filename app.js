@@ -1,23 +1,38 @@
-new Vue({
-  el: "#App",
+let one = new Vue({
+  el: "#vue-app-one",
 
   data: {
-    health: 100,
-    ended: false
+    title: 'Vue app one !😀' 
   },
 
   methods: {
-    punch: function() {
-      this.health -= 10;
-      if (this.health <= 0) {
-        this.ended = true;
-      }
-    },
-    restart: function() {
-      this.health = 100;
-      this.ended = false;
+    
+  },
+  computed: {
+    greet : function(){
+      return `Hello from instance 1`
     }
+  }
+});
+
+// ----------------------------
+
+let two = new Vue({
+  el: "#vue-app-tow",
+
+  data: {
+    title: 'Vue app tow !😀😋✌🏼✌🏼'
   },
 
-  computed: {}
+  methods: {
+    changeTitle: function(){
+     one.title = `now I changed the title 👻` 
+    }
+  },
+  computed: {
+    greet : function(){
+      return `Hello from instance 2  🤠 `
+    },
+    
+  }
 });
