@@ -4,29 +4,119 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <link href="style.css" rel="stylesheet" />
-    <title>VueJS Tut</title>
-    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <title>Vue laraCast</title>
+    <style>
+      .isloading {
+        background: red;
+      }
+    </style>
   </head>
-  <body>
-    <div id="App">
-       <!-- bag image -->
-            <div id="bag" v-bind:class="{ burst: ended }"></div>
-
-            <!-- bag health bar -->
-            <div id="bag-health">
-                <div v-bind:style="{ width: health + '%' }"></div>
+  <body style=" text-align:center; background-color: gray;">
+    <div id="root">
+      <header>
+        <div>
+          <h1 :class="{'isloading': isloading}" @click="toggleTruth">
+            laraCast tutorial - 1
+          </h1>
+        </div>
+      </header>
+      <section>
+        <div>
+          <h1>input</h1>
+          <div>
+            <div class="input">
+              <h1>{{message}}</h1>
             </div>
+            <br />
+            <input type="text" id="input" v-model="message" />
+            <button type="submit">submit</button>
+          </div>
+          <div class="loop" v-for="name in names" v-text="name">
+            <h2></h2>
+          </div>
+          <div class="arrayInput">
+            <h1 :style="classcode">
+              test color
+            </h1>
+            <input type="text" v-model="newName" /><br />
+            <button @click="addName">add name</button>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h1>
+          {{ reversedMessage }}
 
-            <!-- game control buttons -->
-            <div id="controls">
-                <button v-on:click="punch" v-show="!ended">Punch</button>
-                <button v-on:click="restart">Restart</button>
-            </div>
-
+          <h1 :style="classcode">tasks</h1>
+          <div class="tasks">
+            <h1>completed tasks</h1>
+            <ul>
+              <li v-for="task in tasks" 
+              v-text="task.description "
+              @click="toggleCompleted"
+              
+              > X </li>
+            </ul>
+          </div>
+          <div class="tasks">
+            <h1>Incompleted tasks</h1>
+            <ul>
+              <li
+                v-for="task in incompletedTasks"
+                v-text="task.description "
+              ></li>
+            </ul>
+          </div>
+        </h1>
+      </section>
     </div>
 
-    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      let vue = new Vue({
+        el: "#root",
+        data: {
+          message: "Hello world",
+          names: ["sam", "Linnea", "Sebbo", "Agneta", "👪"],
+          newName: "",
+          classcode: "color: blue",
+          isloading: false,
+          tasks: [
+            {description : 'go to the store', completed : false},
+            {description : 'go to the school', completed : false},
+            {description : 'eate food and drink ', completed : false},
+            {description : 'do it again', completed : false},
+            {description : 'go not to the store', completed : false},
+            {description : 'go to the bes', completed : true },
+          ],
+
+        },
+        computed: {
+          reversedMessage(){
+             return this.message.split('').reverse().join('');
+          },
+          incompletedTasks(){
+            return this.tasks.filter(task => task.completed);
+            }
+          
+        },
+        methods: {
+          addName() {
+            this.names.push(this.newName);
+            return (this.newName = "");
+          },
+          toggleTruth(){
+            this.isloading = !this.isloading;
+            console.log('is clicked');
+          },
+          toggleCompleted(){
+             this.tasks.completed = ! this.tasks.completed
+            
+            console.log("toggg");
+            
+          }
+        }
+      });
+    </script>
   </body>
 </html>
