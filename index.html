@@ -4,119 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.css">
     <title>Vue laraCast</title>
-    <style>
-      .isloading {
-        background: red;
-      }
-    </style>
   </head>
   <body style=" text-align:center; background-color: gray;">
     <div id="root">
       <header>
         <div>
-          <h1 :class="{'isloading': isloading}" @click="toggleTruth">
-            laraCast tutorial - 1
+          <h1 >
+            laraCast components
           </h1>
+          <br>
         </div>
       </header>
       <section>
-        <div>
-          <h1>input</h1>
-          <div>
-            <div class="input">
-              <h1>{{message}}</h1>
-            </div>
-            <br />
-            <input type="text" id="input" v-model="message" />
-            <button type="submit">submit</button>
-          </div>
-          <div class="loop" v-for="name in names" v-text="name">
-            <h2></h2>
-          </div>
-          <div class="arrayInput">
-            <h1 :style="classcode">
-              test color
-            </h1>
-            <input type="text" v-model="newName" /><br />
-            <button @click="addName">add name</button>
-          </div>
-        </div>
+        <div class="container">
+        <sam-message title="Hello world" body="welcome to my site"> </sam-message>
+        <sam-message title="second message" body="here is another message"> </sam-message>
+      </div>
       </section>
       <section>
-        <h1>
-          {{ reversedMessage }}
-
-          <h1 :style="classcode">tasks</h1>
-          <div class="tasks">
-            <h1>completed tasks</h1>
-            <ul>
-              <li v-for="task in tasks" 
-              v-text="task.description "
-              @click="toggleCompleted"
-              
-              > X </li>
-            </ul>
-          </div>
-          <div class="tasks">
-            <h1>Incompleted tasks</h1>
-            <ul>
-              <li
-                v-for="task in incompletedTasks"
-                v-text="task.description "
-              ></li>
-            </ul>
-          </div>
-        </h1>
+        <modal v-show="showModel" @close="showModel= false">testdhsjbk🔋</modal>
+        <button @click="showModel= true" >show model</button>
       </section>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
-      let vue = new Vue({
-        el: "#root",
-        data: {
-          message: "Hello world",
-          names: ["sam", "Linnea", "Sebbo", "Agneta", "👪"],
-          newName: "",
-          classcode: "color: blue",
-          isloading: false,
-          tasks: [
-            {description : 'go to the store', completed : false},
-            {description : 'go to the school', completed : false},
-            {description : 'eate food and drink ', completed : false},
-            {description : 'do it again', completed : false},
-            {description : 'go not to the store', completed : false},
-            {description : 'go to the bes', completed : true },
-          ],
-
-        },
-        computed: {
-          reversedMessage(){
-             return this.message.split('').reverse().join('');
-          },
-          incompletedTasks(){
-            return this.tasks.filter(task => task.completed);
-            }
-          
-        },
-        methods: {
-          addName() {
-            this.names.push(this.newName);
-            return (this.newName = "");
-          },
-          toggleTruth(){
-            this.isloading = !this.isloading;
-            console.log('is clicked');
-          },
-          toggleCompleted(){
-             this.tasks.completed = ! this.tasks.completed
-            
-            console.log("toggg");
-            
-          }
-        }
-      });
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
