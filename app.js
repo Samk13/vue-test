@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let app = new Vue({
   el:"#App",
   data: {
@@ -15,3 +16,5 @@ let app = new Vue({
     }
   }
 })
+=======
+>>>>>>> vue-components

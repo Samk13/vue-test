@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <link href="style.css" rel="stylesheet" />
-    <title>VueJS Tut</title>
-    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.css"
+    />
+    <title>Vue laraCast</title>
   </head>
+<<<<<<< HEAD
   <body>
     <div id="App">
     <h1>refs</h1>
@@ -16,8 +18,107 @@
       <button @click="readRefs">Submit</button>
       <p>Your fav food is {{ output }}</p>
       <div ref="test">Hello </div>
-    </div>
+=======
+  <!-- ================================================================================ -->
+  <body class="has-text-centered has-background-grey">
+    <div id="root" class="columns">
+      <div class="column">
+        <header class="column">
+          <div class="hero">
+            <div class="">
+              <h1 class="title ">
+                laraCast components
+              </h1>
+            </div>
+            <br />
+          </div>
+        </header>
+        <!-- ================================================================================ -->
+        <nav>
+          <tabs>
+            <tab name="About US" :selected="true">
+              <h1>Here is the content for the about US 👩</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Officia magni voluptates itaque ullam molestiae deleniti
+                temporibus rerum veniam praesentium debitis hic adipisci,
+                necessitatibus ad non accusamus! Aperiam quibusdam similique
+                molestiae.
+              </p>
+            </tab>
+            <tab name="About our culture">
+              <h1>Here is the content for the about our Culture 🤴🤴</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Officia magni voluptates itaque ullam molestiae deleniti
+                temporibus rerum veniam praesentium debitis hic adipisci,
+                necessitatibus ad non accusamus! Aperiam quibusdam similique
+                molestiae.
+              </p>
+            </tab>
+            <tab name="About our Vision">
+              <h1>Here is the content for the about our vision 🧜‍♀️🧜‍♀️🧜‍♀️</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Officia magni voluptates itaque ullam molestiae deleniti
+                temporibus rerum veniam praesentium debitis hic adipisci,
+                necessitatibus ad non accusamus! Aperiam quibusdam similique
+                molestiae.
+              </p>
+            </tab>
+          </tabs>
+        </nav>
+        <br />
+        <!-- ================================================================================ -->
+        <section class="has-background-grey-dark">
+          <div class="hero-body">
+            <sam-message title="Hello world" body="welcome to my site">
+            </sam-message>
+          </div>
+        </section>
+        <section>
+          <modal v-show="showModel" @close="showModel= false"
+            >test Show Model 🔋
+            <br />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid cum
+            enim dignissimos commodi! Illum ad debitis impedit, dolores modi eos
+            atque quas quod, dolorum voluptate temporibus fugit velit
+            consequuntur non.
+          </modal>
+          <button @click="showModel= true" class="button is-warning is-medium">
+            show model
+          </button>
+        </section>
+        <!-- ================================================================================ -->
+        <section class="hero-body has-background-grey ">
+          <h1 class="title">Coupon</h1>
+          <coupon @applied="onCouponAplied"></coupon>
+          <h1 v-if="couponApplied" class="notification is-success">
+            You used a coupon
+          </h1>
+        </section>
+        <!-- ================================================================================ -->
+        <section class="hero-body">
+          <div>
+            <h1 class="title">Named Slots in a Nutshell</h1>
+            <modal-long>
+              <template slot="header">test the title </template>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque fugiat sunt harum voluptatibus soluta ipsa voluptate eius quae iste consequatur et fuga quam ad sapiente quisquam omnis, voluptatum porro? Voluptates.
+              <template slot="footer">
+                 <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button">Cancel</button>
+    </footer>
+              </template>
+            </modal-long>
+          </div>
+        </section>
 
-    <script src="app.js"></script>
+        <!-- ================================================================================ -->
+      </div>
+>>>>>>> vue-components
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
