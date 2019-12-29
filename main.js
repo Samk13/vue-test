@@ -1,30 +1,24 @@
+// we creat window.Event to make somthing similer to redux to notify sibling components or unrelated comps
 
-// we creat window.Event to make somthing similer to redux to notify sibling components or unrelated comps 
-
-// basic exemple : 
-
+// basic exemple :
 
 // window.Event = new Vue();
 
+// or we can make look better by creating a class to use it as a tool
 
-// or we can make look better by creating a class to use it as a tool 
-
-window.Event = new class {
-  constructor(){
+window.Event = new (class {
+  constructor() {
     this.vue = new Vue();
   }
 
-  fire(event, data = null){
+  fire(event, data = null) {
     this.vue.$emit(event, data);
   }
 
-  listen(event, callback){
+  listen(event, callback) {
     this.vue.$on(event, callback);
   }
-}
-
-
-
+})();
 
 /* ======================================================== */
 Vue.component("sam-message", {
@@ -132,28 +126,58 @@ Vue.component("tab", {
 
 Vue.component("coupon", {
   template: `
-  <input placeholder="Enter your coupon code" @blur="onCouponAplied">
+  <div class="field">
+    <input class="input is-promary"  placeholder="Enter your coupon code" @blur="onCouponAplied">
+</div>
   `,
   methods: {
     onCouponAplied() {
       // this.$emit("applied");
-      // the old exemple in th first coouple lines of code 
+      // the old exemple in th first coouple lines of code
       // Event.$emit('applied');
-      // after we create the class on line 12 
-      Event.fire('applied');
+      // after we create the class on line 12
+      Event.fire("applied");
     }
   }
 });
 
 /* ======================================================== */
 
+
+// if you have multiple slots you can specify ecery slot with a name="" tag and in html you can rapp a template tag with a slot="the slot name " 
+// if you don't specify the slot name it will be the default slot and you can write without any preperations 
+// what you write inside a slot section will be replaced as soon as you write somthing in the html slot so don't be surprised!
+Vue.component("modal-long", {
+  template: `
+    <div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+
+    <header class="modal-card-head">
+      <p class="modal-card-title">
+      <slot name="header"></slot>
+      </p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+
+    <section class="modal-card-body">
+      <slot></slot>
+    </section>
+
+
+   <slot name="footer"></slot>
+  </div>
+</div>
+  `
+});
+
+/* ======================================================== */
 new Vue({
   el: "#root",
   data() {
     return {
       showModel: false,
-      couponApplied : false,
-
+      couponApplied: false
     };
   },
   methods: {
@@ -164,12 +188,11 @@ new Vue({
   },
 
   // here we can liten to events from the Event.$on()
-  created(){
-    // old way before creating the class tool 
+  created() {
+    // old way before creating the class tool
     // Event.$on('applied', ()=> console.log('respose  to event listener'));
-    // after creating the class tool we refactore it to be like : 
+    // after creating the class tool we refactore it to be like :
 
-    Event.listen('applied', ()=> console.log('response to the event listner 🤴'));
-    
+    Event.listen("applied", () => (this.couponApplied = true));
   }
 });
