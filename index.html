@@ -7,43 +7,63 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.css">
     <title>Vue laraCast</title>
   </head>
+  <!-- ================================================================================ -->
   <body style=" text-align:center; background-color: gray;">
-    <div id="root">
-      <header>
-        <div>
-          <h1 >
-            laraCast components
-          </h1>
+    <div id="root" class="columns">
+      <div class="column">
+              <header class="column">
+        <div class="hero">
+          <div class="">
+            <h1 class="title ">
+              laraCast components
+            </h1>
+
+          </div>
           <br>
         </div>
       </header>
+<!-- ================================================================================ -->
       <nav>
         <tabs>
           <tab name="About US" :selected="true">
             <h1>Here is the content for the about US 👩</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia magni voluptates itaque ullam molestiae deleniti temporibus rerum veniam praesentium debitis hic adipisci, necessitatibus ad non accusamus! Aperiam quibusdam similique molestiae.</p>
           </tab>
           <tab name="About our culture">
             <h1>Here is the content for the about our Culture 🤴🤴</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia magni voluptates itaque ullam molestiae deleniti temporibus rerum veniam praesentium debitis hic adipisci, necessitatibus ad non accusamus! Aperiam quibusdam similique molestiae.</p>
           </tab>
           <tab name="About our Vision">
             <h1>Here is the content for the about our vision 🧜‍♀️🧜‍♀️🧜‍♀️</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia magni voluptates itaque ullam molestiae deleniti temporibus rerum veniam praesentium debitis hic adipisci, necessitatibus ad non accusamus! Aperiam quibusdam similique molestiae.</p>
           </tab>
         </tabs>
       </nav>
       <br>
-      
+<!-- ================================================================================ -->
       <section>
-        <div class="container">
+        <div class="hero-body">
         <sam-message title="Hello world" body="welcome to my site"> </sam-message>
-        <sam-message title="second message" body="here is another message"> </sam-message>
       </div>
       </section>
       <section>
-        <modal v-show="showModel" @close="showModel= false">testdhsjbk🔋</modal>
-        <button @click="showModel= true" >show model</button>
+        <modal v-show="showModel" @close="showModel= false">test Show Model 🔋</modal>
+        <button @click="showModel= true" class="button is-warning is-medium">show model</button>
       </section>
+<!-- ================================================================================ -->   
+   <section class="hero-body ">
+     <h1 class="title">Coupon</h1>
+     <coupon @applied="onCouponAplied"></coupon>
+     <h1 v-if="couponApplied"> You used a coupon</h1>
+  </section>
+  
+  
+  
+      </div>
+  
+  
+<!-- ================================================================================ -->   
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="main.js"></script>
   </body>
