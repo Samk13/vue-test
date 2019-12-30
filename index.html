@@ -92,20 +92,44 @@
         <section class="hero-body">
           <div>
             <h1 class="title">Named Slots in a Nutshell</h1>
-            <modal-long>
+            <button class="button is-danger" @click="showModelLong=true">show</button>
+            <modal-long v-show="showModelLong" @close-long="showModelLong=false">
               <template slot="header">test the title </template>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque fugiat sunt harum voluptatibus soluta ipsa voluptate eius quae iste consequatur et fuga quam ad sapiente quisquam omnis, voluptatum porro? Voluptates.
               <template slot="footer">
                  <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
-      <button class="button">Cancel</button>
-    </footer>
+                    <button class="button is-success">Save changes</button>
+                    <button class="button">Cancel</button>
+                 </footer>
               </template>
             </modal-long>
           </div>
         </section>
 
         <!-- ================================================================================ -->
+
+        <section class="hero-body">
+          <div>
+            <h1 class="title">Inline templates</h1>
+            <h3 class="subtitle">often used in Laravel</h3>
+            <progress-view inline-template>
+              <div class="column">
+                <h1>You can create inline templates by adding the tag "inline-template" 
+                  to the html tag span <span class="title">{{complitionRate + currency }}</span>
+                  <br>
+                  and still the same rule apple by wrapping all your tag with one div cause if you have more then one 
+                  Vue will nopt recognise it ! 
+                  <br>
+                  still it's not the best recommended way of writing templates but still is good toolto reach for it in serverside 
+                </h1>
+                <br>
+                <button class="button" @click="complitionRate += 10">add to progress</button>
+                <button class="button" @click="complitionRate -= 10">sub to progress</button>
+
+              </div>   
+            </progress-view>
+          </div>
+        </section>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

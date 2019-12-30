@@ -157,7 +157,7 @@ Vue.component("modal-long", {
       <p class="modal-card-title">
       <slot name="header"></slot>
       </p>
-      <button class="delete" aria-label="close"></button>
+      <button class="delete" aria-label="close" @click="$emit('close-long')"></button>
     </header>
 
     <section class="modal-card-body">
@@ -172,12 +172,25 @@ Vue.component("modal-long", {
 });
 
 /* ======================================================== */
+
+Vue.component('progress-view',{
+data(){
+  return {
+    complitionRate : 60,
+    currency: '🍻',
+  };
+}
+});
+
+
+/* ======================================================== */
 new Vue({
   el: "#root",
   data() {
     return {
       showModel: false,
-      couponApplied: false
+      showModelLong: false,
+      couponApplied: false,
     };
   },
   methods: {
